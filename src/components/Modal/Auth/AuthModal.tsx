@@ -14,7 +14,7 @@ const AuthModal:React.FC = () => {
   const [modalState, setModalState] = useRecoilState(authModalState)
 
   // Auth state to toggle model
-  const [user, loading, error] = useAuthState(auth)
+  const [user] = useAuthState(auth)
 
   // Close modal (called with exit button)
   const handleClose = () => {

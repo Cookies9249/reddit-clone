@@ -8,11 +8,7 @@ import { theme } from '../chakra/theme'
 import Layout from "../components/Layout/Layout"
 import { RecoilRoot } from 'recoil'
 
-export function Providers({ 
-    children 
-  }: { 
-  children: React.ReactNode 
-  }) {
+export function Providers({ children } : { children: React.ReactNode }) {
   return (
     <CacheProvider>
       <RecoilRoot>

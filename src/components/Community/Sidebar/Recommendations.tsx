@@ -13,7 +13,6 @@ const Recommendations:React.FC = () => {
     const [communities, setCommunities] = useState<Community[]>([]);
     const [loading, setLoading] = useState(false);
     const { communityStateValue, onJoinOrLeaveCommunity } = useCommunityData();
-    const [user] = useAuthState(auth);
 
     const getCommunityRecommendations = async () => {
         setLoading(true);

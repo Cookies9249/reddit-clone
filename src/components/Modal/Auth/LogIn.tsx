@@ -17,12 +17,7 @@ const LogIn:React.FC = () => {
     })
 
     // Sign in using react-firebase-hooks
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const [ signInWithEmailAndPassword, user, loading, error ] = useSignInWithEmailAndPassword(auth);
     
     // Firebase logic
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -46,31 +41,21 @@ const LogIn:React.FC = () => {
         <form onSubmit={onSubmit}>
 
             {/* Text Inputs (Username and Password) */}
-            <Input
-                required
-                name='email'
-                placeholder='Email'
-                type='email'
-                mb='2'
+            <Input required
+                name='email' placeholder='Email' type='email'
+                fontSize='10pt' mb='2' bg='gray.50'
                 onChange={onChange}
-                fontSize='10pt'
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-                bg='gray.50'
             />
-            <Input
-                required
-                name='password'
-                placeholder='Password'
-                type='password'
-                mb='2'
+            <Input required
+                name='password' placeholder='Password' type='password'
+                fontSize='10pt' mb='2' bg='gray.50'
                 onChange={onChange}
-                fontSize='10pt'
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-                bg='gray.50'
             />
 
             {/* Error Text */}
