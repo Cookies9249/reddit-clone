@@ -1,4 +1,4 @@
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { communityState } from '@/src/atoms/communityAtoms';
 import { auth } from '@/src/firebase/clientApp';
 import useDirectory from '@/src/hooks/useDirectory';

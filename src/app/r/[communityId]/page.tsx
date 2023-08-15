@@ -11,100 +11,98 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'
 import CreatePostLink from '@/src/components/Community/CreatePostLink';
 import Posts from '@/src/components/Posts/Posts';
-import { useSetRecoilState } from 'recoil';
-import About from '@/src/components/Community/About';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import About from '@/src/components/Community/Sidebar/About';
+import { Spinner } from '@chakra-ui/react';
 import PostLoader from '@/src/components/Posts/PostLoader';
 
 const safeJsonStringify = require('safe-json-stringify');
 
 const CommunityPage:React.FC = () => {
 
+    // Get dynamic parameter for communityId
+    const communityId = useParams().communityId;
+
+    // States for communityData
+    const [communityStateValue, setCommunityStateValue] = useRecoilState(communityState);
+    const [fetchStatus, setFetchStatus] = useState('');
+
+    // Fetch community data from database
     const fetchCommunityData = async (communityId: string) => {
-        
+
         try {
-            // Load data for community
+            // Load document from database
             const communityDocRef = doc(firestore, 'communities', communityId);
             const communityDoc = await getDoc(communityDocRef);
-            const data = await JSON.parse(safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() }))
+
+            // Convert document into object
+            const data = await JSON.parse(safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() }));
+
+            // Return result for fetched data
+            // setCommunityData(communityDoc.exists() ? data : 'Not Found')
+
+            // Set recoil state for current community
+            if (communityDoc.exists()) {
+                setCommunityStateValue(prev => ({
+                    ...prev,
+                    currentCommunity: data as Community,
+                }))
+            }
+
+            // Set fetch status
+            setFetchStatus(
+                communityDoc.exists() ? 'Found' : 'Not Found'
+            )
             
-            return communityDoc.exists() ? data : 'Not Found'
-    
-        } catch (error) {
-            console.log('getServerSideProps error', error)
+        } catch (error: any) {
+            console.log('fetchCommunityData', error.message)
         }
     }
 
-    // Get dynamic parameter for communityId
-    const communityId = useParams().communityId;
-    const [communityData, setCommunityData] = useState('');
-    const setCommunityStateValue = useSetRecoilState(communityState);
-
-    // Get community data
+    // Fetch community data when changing community
     useEffect(() => {
-        async function getCommunityData() {
-            const communityData = await fetchCommunityData(communityId);
-            setCommunityData(communityData);
-            setCommunityStateValue(prev => ({
-                ...prev,
-                currentCommunity: communityData as Community,
-            }))
-        }
-        getCommunityData();
-    }, [])
+        if (!communityId) return;
+
+        fetchCommunityData(communityId);
+    }, [communityId])
 
     // If loading community data
-    if (!communityData) {
+    if (!communityStateValue.currentCommunity && !fetchStatus) {
         return (
             <PageContent>
                 <><PostLoader/></>
-                <></>
+                <><PostLoader/></>
             </PageContent>
         );
-    }
+    } 
 
     // If community not found
-    if (communityData == 'Not Found') {
+    if (!communityStateValue.currentCommunity && fetchStatus == 'Not Found') {
         return <NotFound/>;
     }
 
     // If community found
-    return (
-        <>
-            <Header communityData={communityData}/>
-            <PageContent>
-                {/* Left Side */}
-                <>
-                    <CreatePostLink/>
-                    <Posts communityData={communityData}/>
-                </>
+    if (communityStateValue.currentCommunity) {
 
-                {/* Right Side */}
-                <><About communityData={communityData}/></>
-            </PageContent>
-        </>
-    )
+        console.log('COMMUNITY FOUND', communityStateValue.currentCommunity)
+        return (
+            <>
+                <Header communityData={communityStateValue.currentCommunity}/>
+                <PageContent>
+                    {/* Left Side */}
+                    <>
+                        <CreatePostLink/>
+                        <Posts communityData={communityStateValue.currentCommunity}/>
+                    </>
+
+                    {/* Right Side */}
+                    <><About communityData={communityStateValue.currentCommunity}/></>
+                </PageContent>
+            </>
+        )
+
+    }
 
 }
-
-// Server side rendering
-// Fix: Code is different for Next 13 with app directory
-// async function getServerSideProps(context: GetServerSidePropsContext) {
-//     console.log("GET SERVER SIDE PROPS RUNNING");
-    
-//     try {
-//         // Load data for community
-//         const communityDocRef = doc(firestore, 'communities', communityId);
-//         const communityDoc = await getDoc(communityDocRef);
-//         const data = await JSON.parse(safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() }))
-        
-//         return 'here is the data'
-//         // return { communityData: communityDoc.exists() ? data : 'None' }
-
-//     } catch (error) {
-//         console.log('getServerSideProps error', error)
-//     }
-// }
-
-
 
 export default CommunityPage;

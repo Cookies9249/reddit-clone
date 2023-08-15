@@ -1,4 +1,4 @@
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { auth } from '@/src/firebase/clientApp';
 import { Flex, Button, Image, Text, Input, Icon, Link } from '@chakra-ui/react';
 import React, { useState } from 'react';

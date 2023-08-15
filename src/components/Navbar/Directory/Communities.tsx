@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import CreateCommunityModal from '../../Modal/Community/CreateCommunityModal';
 import { Box, Flex, Icon, Image, MenuItem, Text } from '@chakra-ui/react';
 import { GrAdd } from 'react-icons/gr'
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { communityState } from '@/src/atoms/communityAtoms';
 import { FaReddit } from 'react-icons/fa';
 import MenuListItem from './MenuListItem';
 import { IconBaseProps } from 'react-icons/lib';
+import { communityModalState } from '@/src/atoms/modalAtoms';
 
 type CommunitiesProps = {
     
 };
 
 const Communities:React.FC<CommunitiesProps> = () => {
-    const [open, setOpen] = useState(false);
+    const [communityModalStateOpen, setCommunityModalStateOpen] = useRecoilState(communityModalState);
     const mySnippets = useRecoilValue(communityState).mySnippets;
     
     return (
@@ -22,7 +23,7 @@ const Communities:React.FC<CommunitiesProps> = () => {
         <>
         
             {/* Create communities modal (not open yet) */}
-            <CreateCommunityModal open={open} handleClose={() => setOpen(false)}/>
+            <CreateCommunityModal open={communityModalStateOpen} handleClose={() => setCommunityModalStateOpen(false)}/>
 
             {/* Moderating text */}
             <Box mt='2' mb='3'>
@@ -53,7 +54,7 @@ const Communities:React.FC<CommunitiesProps> = () => {
             </Box>
 
             {/* Create community item */}
-            <MenuItem width='100%' fontSize='10pt' _hover={{ bg: 'gray.100' }} onClick={() => {setOpen(true)}}>
+            <MenuItem width='100%' fontSize='10pt' _hover={{ bg: 'gray.100' }} onClick={() => {setCommunityModalStateOpen(true)}}>
                 <Flex align='center'>
                     <Icon fontSize='20' mr='2' as={GrAdd}/>
                     Create Community

@@ -68,7 +68,7 @@ const About:React.FC<AboutProps> = ({ communityData }) => {
     };
 
     return (
-        <Box position='sticky' top='14px'>
+        <>
 
             {/* Header */}
             <Flex justify='space-between' align='center' bg='blue.400' color='white' p='3' borderRadius='4px 4px 0px 0px'>
@@ -165,7 +165,7 @@ const About:React.FC<AboutProps> = ({ communityData }) => {
 
                 </Stack>
             </Flex>
-        </Box>
+        </>
         
     )
 }

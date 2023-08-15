@@ -4,7 +4,7 @@ import { Community, CommunitySnippet, communityState } from '../atoms/communityA
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, firestore, storage } from '../firebase/clientApp';
 import { getDocs, collection, writeBatch, doc, increment, deleteDoc, where, query } from 'firebase/firestore';
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { Post, PostVote, postState } from '../atoms/postsAtom';
 import { deleteObject, ref } from 'firebase/storage';
 import { useRouter } from 'next/navigation';

@@ -8,6 +8,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import useDirectory from '@/src/hooks/useDirectory';
 
+// Called from Directory/Communities.tsx
+
 type CreateCommunityModalProps = {
     open: boolean;
     handleClose: () => void;

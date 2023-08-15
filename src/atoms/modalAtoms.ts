@@ -8,7 +8,7 @@ export interface AuthModalState {
 }
 
 // Create default AuthModalState
-const defaultModalState: AuthModalState = {
+const defaultAuthModalState: AuthModalState = {
     open: false,
     view: 'login'
 };
@@ -16,5 +16,11 @@ const defaultModalState: AuthModalState = {
 // Create atom (template from docs)
 export const authModalState = atom<AuthModalState>({
     key: 'authModalState',  // unique identifier for atom 
-    default: defaultModalState, 
+    default: defaultAuthModalState, 
 });
+
+// CREATE COMMUNITIES MODAL STATE
+export const communityModalState = atom<boolean>({
+    key: 'communityModalState',
+    default: false,
+})

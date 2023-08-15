@@ -2,7 +2,7 @@
 
 import { Community, communityState } from '@/src/atoms/communityAtoms';
 import { Post } from '@/src/atoms/postsAtom';
-import About from '@/src/components/Community/About';
+import About from '@/src/components/Community/Sidebar/About';
 import PageContent from '@/src/components/Layout/PageContent';
 import Comments from '@/src/components/Posts/Comments/Comments';
 import PostItem from '@/src/components/Posts/PostItem';

@@ -1,4 +1,4 @@
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import { useRecoilValue } from 'recoil';

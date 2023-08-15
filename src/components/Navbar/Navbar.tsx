@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
     const { onSelectMenuItem } = useDirectory();
 
     return (
-        <Flex bg='white' height='44px' padding='6px 12px' justify={{ md: 'space-between' }}>
+        <Flex bg='white' height='44px' padding='6px 12px' justify={{ md: 'space-between' }} position='sticky' top='0px'>
 
             {/* Reddit Logos */}
             <Flex align='center' cursor='pointer'

@@ -14,9 +14,9 @@ import usePosts from '../hooks/usePosts'
 import { Post, PostVote } from '../atoms/postsAtom'
 import PostLoader from '../components/Posts/PostLoader'
 import { ref } from 'firebase/storage'
-import Recommendations from '../components/Community/Recommendations'
-import Premium from '../components/Community/Premium'
-import PersonalHome from '../components/Community/PersonalHome'
+import Recommendations from '../components/Community/Sidebar/Recommendations'
+import Premium from '../components/Community/Sidebar/Premium'
+import PersonalHome from '../components/Community/Sidebar/PersonalHome'
 
 
 // page.tsx instead of index.tsx in Next 13

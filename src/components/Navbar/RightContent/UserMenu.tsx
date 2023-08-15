@@ -5,7 +5,7 @@ import React from 'react';
 import { User, signOut } from 'firebase/auth';
 import { auth } from '@/src/firebase/clientApp';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 
 // Icon imports
 import { FaRedditSquare } from 'react-icons/fa';

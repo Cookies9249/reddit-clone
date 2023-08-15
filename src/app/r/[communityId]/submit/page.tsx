@@ -1,7 +1,7 @@
 'use client'
 
 import { communityState } from '@/src/atoms/communityAtoms';
-import About from '@/src/components/Community/About';
+import About from '@/src/components/Community/Sidebar/About';
 import PageContent from '@/src/components/Layout/PageContent';
 import NewPostForm from '@/src/components/Posts/NewPostForm';
 import { auth } from '@/src/firebase/clientApp';
@@ -10,7 +10,7 @@ import { Box, Text } from '@chakra-ui/react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRecoilValue } from 'recoil';
 
-const SubmitPostPage:React.FC = () => {
+const SubmitCommunityPostPage:React.FC = () => {
     
     const [user] = useAuthState(auth);
     const { communityStateValue } = useCommunityData();
@@ -38,4 +38,4 @@ const SubmitPostPage:React.FC = () => {
         
     )
 }
-export default SubmitPostPage;
+export default SubmitCommunityPostPage;

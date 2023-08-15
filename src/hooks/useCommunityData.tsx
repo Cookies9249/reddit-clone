@@ -4,7 +4,7 @@ import { Community, CommunitySnippet, communityState } from '../atoms/communityA
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../firebase/clientApp';
 import { getDocs, collection, writeBatch, doc, increment, getDoc } from 'firebase/firestore';
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { useParams } from 'next/navigation';
 
 // Custom hook for using and changing data

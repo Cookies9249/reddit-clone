@@ -1,5 +1,5 @@
 // Template from https://v1.chakra-ui.com/docs/components/overlay/modal
-import { authModalState } from '@/src/atoms/authModalAtom';
+import { authModalState } from '@/src/atoms/modalAtoms';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Flex, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';

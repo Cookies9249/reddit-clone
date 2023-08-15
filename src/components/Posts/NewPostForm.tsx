@@ -1,6 +1,6 @@
 import { Alert, AlertIcon, Flex, Icon, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
-import { BsLink45Deg, BsMic } from 'react-icons/bs';
+import { BsLink45Deg } from 'react-icons/bs';
 import { BiPoll } from 'react-icons/bi'
 import { IoDocumentText, IoImageOutline } from 'react-icons/io5';
 import TabItem from './TabItem';
@@ -25,10 +25,9 @@ type NewPostFormProps = {
 // Multi tab navigation
 const formTabs: TabItemType[] = [
     { title: 'Post', icon: IoDocumentText },
-    { title: 'Images & Video', icon: IoImageOutline },
+    { title: 'Images', icon: IoImageOutline },
     { title: 'Link', icon: BsLink45Deg },
     { title: 'Poll', icon: BiPoll },
-    { title: 'Talk', icon: BsMic }
 ]
 
 // Tab Item
@@ -123,7 +122,7 @@ const NewPostForm:React.FC<NewPostFormProps> = ({ user, communityImageURL }) => 
                     <TextInputs textInputs={textInputs} handleCreatePost={handleCreatePost} onChange={onTextChange} loading={loading}/>
                 )}
 
-                {selectedTab === 'Images & Video' && (
+                {selectedTab === 'Images' && (
                     <ImageUpload selectedFile={selectedFile} onSelectImage={onSelectFile} setSelectedTab={setSelectedTab} setSelectedFile={setSelectedFile} loading={loading}/>
                 )}
 
