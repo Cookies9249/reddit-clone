@@ -19,7 +19,7 @@ const PersonalHome:React.FC = () => {
 
             <Flex direction='column' p='12px'>
                 <Flex align='center' mb='2'>
-                    <Icon as={FaReddit} fontSize='50' color='brand.500' mr='2'/>
+                    <Icon as={FaReddit} fontSize='50' color='brand.100' mr='2'/>
                     <Text fontWeight='600'>Home</Text>
                 </Flex>
                 <Stack spacing='3'>

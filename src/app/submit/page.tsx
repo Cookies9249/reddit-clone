@@ -38,11 +38,11 @@ const SubmitPostPage:React.FC = () => {
 
                 <>
                     <Text fontSize='8pt'>
-                        Please be mindful of reddit's{' '}
+                        {`Please be mindful of reddit's `}
                         <Link color='blue.500' href={'https://www.redditinc.com/policies/content-policy'}>
                             content policy
                         </Link>
-                        {' '}and practice good{' '}
+                        {` and practice good `}
                         <Link color='blue.500' href={'https://www.reddit.com/wiki/reddiquette/'}>
                             reddiquette
                         </Link>
