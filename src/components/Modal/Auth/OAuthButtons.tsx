@@ -33,7 +33,7 @@ const OAuthButtons:React.FC = () => {
         <Flex direction='column' width='100%' mb='4'>
             {/* Google Sign In */}
             <Button variant='oauth' mb='2' isLoading={loading} onClick={() => signInWithGoogle()}>
-                <Image src='images/googlelogo.png' height='20px' mr='4'/>
+                <Image src='/images/googlelogo.png' height='20px' mr='4'/>
                 Continue with Google
             </Button>
 
