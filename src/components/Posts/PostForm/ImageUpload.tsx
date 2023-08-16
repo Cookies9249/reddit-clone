@@ -1,3 +1,7 @@
+// Uploading an image into post creation form
+// Used in NewPostForm.tsx
+// Image uploading logic is located in NewPostForm.tsx
+
 import { Button, Flex, Image, Stack } from '@chakra-ui/react';
 import React, { useRef } from 'react';
 

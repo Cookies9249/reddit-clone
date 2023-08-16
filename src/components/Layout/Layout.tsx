@@ -1,3 +1,6 @@
+// Layout for entire app with navbar on top
+// Used in providers.tsx
+
 import React from 'react';
 import Navbar from '../Navbar/Navbar';
 

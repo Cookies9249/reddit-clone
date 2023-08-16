@@ -1,4 +1,11 @@
 // Template from https://v1.chakra-ui.com/docs/components/overlay/modal
+
+// Component for authentication modal
+// Open/Closing logic uses authModalState from atoms/modalAtoms.tsx
+// Uses AuthInputs and OAuthButtons
+// Used in Navbar/RightContent/RightContent.tsx
+// Recoil state used in ...
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Flex, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
@@ -51,11 +58,12 @@ const AuthModal:React.FC = () => {
               {/* Content in Modals */}
               {(modalState.view === 'login' || modalState.view === 'signup') ? (
                 <>
-                  <OAuthButtons/>
-                  <Text color='gray.500' fontWeight='700'>OR</Text>
-                  <AuthInputs/>
+                <OAuthButtons/>
+                <Text color='gray.500' fontWeight='700'>OR</Text>
+                <AuthInputs/>
                 </>
               ) : <ResetPassword/>}
+
             </Flex>
           </ModalBody>
         </ModalContent>

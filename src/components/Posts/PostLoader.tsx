@@ -1,3 +1,6 @@
+// Skeleton for when posts are loading
+// Used in Posts.tsx
+
 import { Box, Stack, SkeletonText, Skeleton } from '@chakra-ui/react';
 import React from 'react';
 

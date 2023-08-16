@@ -1,5 +1,9 @@
 // Template from https://chakra-ui.com/docs/components/menu#usage
 
+// Displays user information and dropdown for auth
+// Used in RightContent.tsx
+// Uses authModalState to toggle auth modal
+
 import { Menu, MenuButton, Text, MenuList, MenuItem, Icon, Flex, MenuDivider } from '@chakra-ui/react';
 import React from 'react';
 import { User, signOut } from 'firebase/auth';
@@ -25,7 +29,6 @@ const UserMenu:React.FC<UserMenuProps> = ({ user }) => {
     const resetCommunityState = useResetRecoilState(communityState);
 
     const logout = async () => {
-        
         await signOut(auth);
         // migrated to useCommunityData in useEffect: resetCommunityState()
     }
@@ -71,53 +74,52 @@ const UserMenu:React.FC<UserMenuProps> = ({ user }) => {
             {/* Menu Items */}
             <MenuList>
                 { user ? (
-
                     // If a user is logged in
                     <>
-                        {/* Profile */}
-                        <MenuItem
-                            fontSize='10pt'
-                            fontWeight='700'
-                            _hover={{ bg: 'blue.500', color: 'white' }}
-                        >
-                            <Flex align='center'>
-                                <Icon fontSize='20' mr='2' as={CgProfile}/>
-                                Profile
-                            </Flex>
-                        </MenuItem>
+                    {/* Profile */}
+                    <MenuItem
+                        fontSize='10pt'
+                        fontWeight='700'
+                        _hover={{ bg: 'blue.500', color: 'white' }}
+                    >
+                        <Flex align='center'>
+                            <Icon fontSize='20' mr='2' as={CgProfile}/>
+                            Profile
+                        </Flex>
+                    </MenuItem>
 
-                        <MenuDivider/>
+                    <MenuDivider/>
 
-                        {/* Log Out */}
-                        <MenuItem
-                            fontSize='10pt'
-                            fontWeight='700'
-                            _hover={{ bg: 'blue.500', color: 'white' }}
-                            onClick={logout}
-                        >
-                            <Flex align='center'>
-                                <Icon fontSize='20' mr='2' as={MdOutlineLogin}/>
-                                Log Out
-                            </Flex>
-                        </MenuItem>
+                    {/* Log Out */}
+                    <MenuItem
+                        fontSize='10pt'
+                        fontWeight='700'
+                        _hover={{ bg: 'blue.500', color: 'white' }}
+                        onClick={logout}
+                    >
+                        <Flex align='center'>
+                            <Icon fontSize='20' mr='2' as={MdOutlineLogin}/>
+                            Log Out
+                        </Flex>
+                    </MenuItem>
                     </>
 
                 ) : (
 
                     // If no user is logged in
                     <>
-                        {/* Log In / Sign Up */}
-                        <MenuItem
-                            fontSize='10pt'
-                            fontWeight='700'
-                            _hover={{ bg: 'blue.500', color: 'white' }}
-                            onClick={() => setAuthModalState( {open: true, view: 'login'} )}
-                        >
-                            <Flex align='center'>
-                                <Icon fontSize='20' mr='2' as={MdOutlineLogin}/>
-                                Log In / Sign Up
-                            </Flex>
-                        </MenuItem>
+                    {/* Log In / Sign Up */}
+                    <MenuItem
+                        fontSize='10pt'
+                        fontWeight='700'
+                        _hover={{ bg: 'blue.500', color: 'white' }}
+                        onClick={() => setAuthModalState( {open: true, view: 'login'} )}
+                    >
+                        <Flex align='center'>
+                            <Icon fontSize='20' mr='2' as={MdOutlineLogin}/>
+                            Log In / Sign Up
+                        </Flex>
+                    </MenuItem>
                     </>
 
                 )}

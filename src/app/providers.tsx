@@ -1,6 +1,8 @@
-// For Chakra
-// app/providers.tsx
 'use client'
+
+// For implementing Chakra components into app
+// Used in layout.tsx
+// Uses components/Layout/Layout.tsx
 
 import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider } from '@chakra-ui/react'

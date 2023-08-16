@@ -1,7 +1,8 @@
-import { DirectoryMenuItem } from '@/src/atoms/directoryMenuAtom';
+// Template for directory menu items
+// Used in Communities.tsx
+
 import useDirectory from '@/src/hooks/useDirectory';
 import { MenuItem, Flex, Icon, Image, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import { IconType } from 'react-icons/lib';
 
@@ -14,11 +15,9 @@ type MenuListItemProps = {
 };
 
 const MenuListItem:React.FC<MenuListItemProps> = ({ displayText, link, icon, iconColor, imageURL }) => {
-
     const { onSelectMenuItem } = useDirectory();
     
     return (
-        
         <MenuItem width='100%' fontSize='10pt' _hover={{ bg: 'gray.100' }} onClick={() => onSelectMenuItem({displayText, link, icon, iconColor, imageURL})}>
             <Flex align='center'>
 
@@ -33,7 +32,6 @@ const MenuListItem:React.FC<MenuListItemProps> = ({ displayText, link, icon, ico
                 
             </Flex>
         </MenuItem>
-
     )
 }
 export default MenuListItem;

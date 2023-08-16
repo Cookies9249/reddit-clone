@@ -1,3 +1,6 @@
+// Button for logging in using OAuth (Google sign in using useSignInWithGoogle() hook)
+// Used in AuthModal.tsx
+
 import { Flex, Button, Image, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'

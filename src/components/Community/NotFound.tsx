@@ -1,7 +1,9 @@
+// Displayed when a community is not found
+// Used in community page, routes to home page
+
 import { defaultMenuItem } from '@/src/atoms/directoryMenuAtom';
 import useDirectory from '@/src/hooks/useDirectory';
 import { Flex, Button } from '@chakra-ui/react';
-import Link from 'next/link';
 import React, { useState } from 'react';
 
 const CommunityNotFound:React.FC = () => {
@@ -10,10 +12,8 @@ const CommunityNotFound:React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     const onGoHome = async () => {
-
         setLoading(true);
         onSelectMenuItem(defaultMenuItem);
-        
     }
     
     return (

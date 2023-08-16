@@ -1,5 +1,7 @@
-import { Box, Button, Divider, Flex, Icon, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+// Component displaying reddit posting rules
+// Used in app/submit page
+
+import { Divider, Flex, Icon, Text } from '@chakra-ui/react';
 import React from 'react';
 import { FaReddit } from 'react-icons/fa';
 
@@ -35,7 +37,6 @@ const PostingToReddit:React.FC = () => {
                 ))}
                 
             </Flex>
-
         </Flex>
     )
 }

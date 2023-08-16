@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+// Items in community directory
+// Used in Directory.tsx
+
+// Uses CreateCommunityModal.tsx, contains logic for open/close using communityModalState from atoms/modalAtoms.tsx
+// Recoil state also used in Community/Sidebar/PersonalHome.tsx
+
+// Uses MenuListItem.tsx and communityState to display joined communities
+
+import React from 'react';
 import CreateCommunityModal from '../../Modal/Community/CreateCommunityModal';
-import { Box, Flex, Icon, Image, MenuItem, Text } from '@chakra-ui/react';
+import { Box, Flex, Icon, MenuItem, Text } from '@chakra-ui/react';
 import { GrAdd } from 'react-icons/gr'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { communityState } from '@/src/atoms/communityAtoms';
 import { FaReddit } from 'react-icons/fa';
 import MenuListItem from './MenuListItem';
-import { IconBaseProps } from 'react-icons/lib';
 import { communityModalState } from '@/src/atoms/modalAtoms';
 
-type CommunitiesProps = {
-    
-};
-
-const Communities:React.FC<CommunitiesProps> = () => {
+const Communities:React.FC = () => {
     const [communityModalStateOpen, setCommunityModalStateOpen] = useRecoilState(communityModalState);
     const mySnippets = useRecoilValue(communityState).mySnippets;
     

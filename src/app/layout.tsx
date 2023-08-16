@@ -1,3 +1,6 @@
+// Layout for entire app
+// Uses providers.tsx
+
 import { Inter } from 'next/font/google'
 import { Providers } from "./providers";
 

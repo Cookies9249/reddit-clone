@@ -1,3 +1,7 @@
+// Modal view for signing up using useCreateUserWithEmailAndPassword() hook
+// Used in AuthModal.tsx
+// Updates AuthModal using authModalState
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
@@ -5,7 +9,7 @@ import { useSetRecoilState } from 'recoil';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { auth, firestore } from '@/src/firebase/clientApp'
 import { FIREBASE_ERRORS } from '@/src/firebase/errors'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';
 
 const SignUp:React.FC = () => {
@@ -73,44 +77,26 @@ const SignUp:React.FC = () => {
         <form onSubmit={onSubmit}>
             
             {/* Text Inputs (Username and Password) */}
-            <Input
-                required
-                name='email'
-                placeholder='Email'
-                type='email'
-                mb='2'
+            <Input required name='email' placeholder='Email' type='email'
+                mb='2' fontSize='10pt' bg='gray.50'
                 onChange={onChange}
-                fontSize='10pt'
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-                bg='gray.50'
             />
-            <Input
-                required
-                name='password'
-                placeholder='Password'
-                type='password'
-                mb='2'
+            <Input required name='password' placeholder='Password' type='password'
+                mb='2' fontSize='10pt' bg='gray.50'
                 onChange={onChange}
-                fontSize='10pt'
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-                bg='gray.50'
             />
-            <Input
-                required
-                name='confirmPassword'
-                placeholder='Confirm Password'
-                type='password'
-                mb='2'
+            <Input required name='confirmPassword' placeholder='Confirm Password' type='password'
+                mb='2' fontSize='10pt' bg='gray.50'
                 onChange={onChange}
-                fontSize='10pt'
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-                bg='gray.50'
             />
 
             {/* Error Text */}

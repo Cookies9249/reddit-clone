@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+// Contains logic for uploading a file
+// Used in About and NewPostForm
+
+import { useState } from 'react';
 
 const useSelectFile = () => {
 

@@ -1,6 +1,9 @@
 // Template from https://chakra-ui.com/docs/components/input
 // Icon from https://chakra-ui.com/docs/components/icon
 
+// Search bar in navbar (No usage yet)
+// Used in Navbar.tsx
+
 import { SearchIcon } from '@chakra-ui/icons';
 import { Flex, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { User } from 'firebase/auth';

@@ -1,11 +1,15 @@
+// Displays top communities by number of members in sidebar
+// Used in home page
+// Redirects to community pages
+// Logic for joining communities from useCommunityData()
+
 import { Community } from '@/src/atoms/communityAtoms';
-import { auth, firestore } from '@/src/firebase/clientApp';
+import { firestore } from '@/src/firebase/clientApp';
 import useCommunityData from '@/src/hooks/useCommunityData';
 import { Box, Button, Flex, Icon, Image, Skeleton, SkeletonCircle, Stack, Text } from '@chakra-ui/react';
 import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaReddit } from 'react-icons/fa';
 
 const Recommendations:React.FC = () => {
@@ -18,7 +22,6 @@ const Recommendations:React.FC = () => {
         setLoading(true);
 
         try {
-
             // Query communities by number of members
             const communityQuery = query(
                 collection(firestore, 'communities'),
@@ -34,12 +37,10 @@ const Recommendations:React.FC = () => {
 
             // Set local state
             setCommunities(communityObjs as Community[]);
-
             
         } catch (error) {
             console.log('getCommunityRecommendations error', error);
         }
-
         setLoading(false);
     }
 
@@ -49,7 +50,6 @@ const Recommendations:React.FC = () => {
     }, [])
     
     return (
-
         <Flex direction='column' bg='white' borderRadius='4px' border='1px solid' borderColor='gray.300'>
                 
             {/* Top communities text */}
@@ -130,7 +130,6 @@ const Recommendations:React.FC = () => {
                                             { isJoined ? "Joined" : "Join" }
                                         </Button>
                                     </Box>
-
                                 </Flex>
                             </Link>
                         )
@@ -140,13 +139,9 @@ const Recommendations:React.FC = () => {
                         <Button height='30px' width='100%'>View All</Button>
                     </Box>
                     </>
-                ) }
-
-                
+                )}
             </Flex>
-
         </Flex>
-
     )
 }
 export default Recommendations;

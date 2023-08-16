@@ -1,3 +1,7 @@
+// CONTAINS LOGIC FOR:
+// Voting, selecting and deleting posts
+// Automatically getting user post votes after refresh
+
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { Community, CommunitySnippet, communityState } from '../atoms/communityAtoms';

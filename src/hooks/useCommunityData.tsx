@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from 'react';
+// CONTAINS LOGIC FOR:
+// Joining and leaving communities
+// Automatically fetching user's community snippets
+// Automatically getting community data after refresh
+
+import { useEffect, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { Community, CommunitySnippet, communityState } from '../atoms/communityAtoms';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -76,7 +81,6 @@ const useCommunityData = () => {
     }, [user])
     // Clears communityData with user log out
     
-
     // Joins community, called from onJoinOrLeaveCommunity
     const joinCommunity = async (communityData: Community) => {
 

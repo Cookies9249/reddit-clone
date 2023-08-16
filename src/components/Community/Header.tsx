@@ -1,3 +1,7 @@
+// Community header with logo, community name, and join button
+// Used in community page
+// Logic for joining communities from useCommunityData()
+
 import { Community } from '@/src/atoms/communityAtoms';
 import useCommunityData from '@/src/hooks/useCommunityData';
 import { Box, Button, Flex, Icon, Image, Text } from '@chakra-ui/react';
@@ -13,13 +17,11 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
     // Use created hook
     const { communityStateValue, onJoinOrLeaveCommunity, loading } = useCommunityData();
 
-    // changes based on community snippet
+    // changes based on community snippet (!! to booleanize value)
     const isJoined = !!communityStateValue.mySnippets.find(item => item.communityId === communityData.id)
-    // !! to booleanize value
     
     return (
         <Flex direction='column' width='100%' height='146px'>
-            
             <Box height='50%' bg='blue.400'/>
             <Flex justify='center' bg='white' flexGrow='1'>
                 <Flex width='95%' maxWidth='860px'>
@@ -48,13 +50,10 @@ const Header:React.FC<HeaderProps> = ({ communityData }) => {
                         >
                             { isJoined ? "Joined" : "Join" }
                         </Button>
-
                     </Flex>
                     
-
                 </Flex>
             </Flex>
-
         </Flex>
     )
 }

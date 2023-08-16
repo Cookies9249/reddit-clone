@@ -1,4 +1,6 @@
 // Recoil documentation: https://recoiljs.org/docs/introduction/getting-started
+// Recoil states for auth modals and create community modal
+
 import { atom } from 'recoil';
 
 // Create type AuthModalState

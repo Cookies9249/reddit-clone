@@ -1,3 +1,7 @@
+// Template for item in create post tab
+// Used in NewPostForm.tsx
+// Selecting logic is located in NewPostForm.tsx
+
 import React from 'react';
 import { TabItemType } from './NewPostForm';
 import { Flex, Icon, Text } from '@chakra-ui/react';

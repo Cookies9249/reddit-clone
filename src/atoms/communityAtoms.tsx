@@ -1,4 +1,8 @@
 // Recoil documentation: https://recoiljs.org/docs/introduction/getting-started
+
+// Recoil state for user's community snippets and current community
+// Interface for Community and CommunitySnippet
+
 import { Timestamp } from 'firebase/firestore';
 import { atom } from 'recoil';
 

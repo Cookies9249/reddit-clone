@@ -1,11 +1,8 @@
+// Recoil state for directory menu
+
 import { IconType } from 'react-icons';
 import { TiHome } from 'react-icons/ti';
 import { atom } from 'recoil';
-
-/* When creating an atom, create a type
-    an interface state
-    a default state
-    and the exportable atom */
 
 // Type for selected menu item
 export type DirectoryMenuItem = {

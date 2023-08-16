@@ -1,4 +1,5 @@
 // Custom firebase error messages
+// Used in user authentication process
 
 // Alternatively, in components/Modal/Auth/SignUp, where the error messages are being displayed, display: { error || userError.message === "Firebase: Error (auth/email-already-in-use)." && 'Email arleady in use' || ... }
 

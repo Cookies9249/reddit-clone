@@ -1,3 +1,7 @@
+// Decorative 'Reddit Personal Home' in sidebar
+// Used in home page
+// Uses communityModalState to open CreateCommunityModal
+
 import { communityModalState } from '@/src/atoms/modalAtoms';
 import { Button, Divider, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
@@ -8,7 +12,6 @@ import { useSetRecoilState } from 'recoil';
 const PersonalHome:React.FC = () => {
 
     const setCommunityModalStateOpen = useSetRecoilState(communityModalState);
-    const router = useRouter();
     
     return (
         <Flex direction='column' bg='white' borderRadius='4' cursor='pointer' border='1px solid' borderColor='gray.300' position='sticky'>

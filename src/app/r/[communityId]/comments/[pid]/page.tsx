@@ -1,6 +1,9 @@
 'use client'
 
-import { Community, communityState } from '@/src/atoms/communityAtoms';
+// Page for displaying comments when a post is selected
+// Uses PageContent (layout), Comments, About, and PostItem
+// Routed from home and community page by PostItem.tsx
+
 import { Post } from '@/src/atoms/postsAtom';
 import About from '@/src/components/Community/Sidebar/About';
 import PageContent from '@/src/components/Layout/PageContent';
@@ -14,12 +17,11 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 const PostPage:React.FC = () => {
 
     const [user] = useAuthState(auth);
-    const { postStateValue, setPostStateValue, onVote, onDeletePost, onSelectPost } = usePosts();
+    const { postStateValue, setPostStateValue, onVote, onDeletePost } = usePosts();
     const { communityStateValue } = useCommunityData();
     
     const post = postStateValue.selectedPost;
@@ -49,11 +51,9 @@ const PostPage:React.FC = () => {
 
     // Calls fetchPost if there is a post in URL and no selected post value
     useEffect(() => {
-
         if (params.pid && !postStateValue.selectedPost) {
             fetchPost(params.pid)
         }
-
     }, [params, postStateValue.selectedPost])
     
     return(
@@ -61,29 +61,25 @@ const PostPage:React.FC = () => {
         <PageContent>
             {/* Left Side */}
             <>
-                {post && (
-                    <>
-                        <PostItem post={post}
-                            userIsCreator={user?.uid === post.creatorId}
-                            key={post.id}
-                            userVoteValue={postStateValue.postVotes.find(vote => vote.postId === post.id)?.voteValue}
-                            onVote={onVote} onDeletePost={onDeletePost}
-                            showCommunity
-                        />
-
-                        <Comments user={user as User} selectedPost={post} communityId={post.communityId}/>
-                    </>
-                )}
-
+            {post && (
+                <>
+                <PostItem post={post}
+                    userIsCreator={user?.uid === post.creatorId}
+                    key={post.id}
+                    userVoteValue={postStateValue.postVotes.find(vote => vote.postId === post.id)?.voteValue}
+                    onVote={onVote} onDeletePost={onDeletePost}
+                    showCommunity
+                />
+                <Comments user={user as User} selectedPost={post} communityId={post.communityId}/>
+                </>
+            )}
             </>
 
             {/* Right Side */}
             <>
-                {communityStateValue.currentCommunity && <About communityData={communityStateValue.currentCommunity}/>}
+            {communityStateValue.currentCommunity && <About communityData={communityStateValue.currentCommunity}/>}
             </>
         </PageContent>
-
     )
-
 }
 export default PostPage;

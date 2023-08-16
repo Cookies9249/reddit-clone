@@ -1,3 +1,7 @@
+// Modal view for loggin in using useSignInWithEmailAndPassword() hook
+// Used in AuthInputs.tsx
+// Updates AuthModal using authModalState
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { Button, Flex, Input, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
@@ -41,16 +45,14 @@ const LogIn:React.FC = () => {
         <form onSubmit={onSubmit}>
 
             {/* Text Inputs (Username and Password) */}
-            <Input required
-                name='email' placeholder='Email' type='email'
+            <Input required name='email' placeholder='Email' type='email'
                 fontSize='10pt' mb='2' bg='gray.50'
                 onChange={onChange}
                 _placeholder={{ color: 'gray.500' }}
                 _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
                 _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
             />
-            <Input required
-                name='password' placeholder='Password' type='password'
+            <Input required name='password' placeholder='Password' type='password'
                 fontSize='10pt' mb='2' bg='gray.50'
                 onChange={onChange}
                 _placeholder={{ color: 'gray.500' }}

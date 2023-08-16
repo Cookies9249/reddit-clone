@@ -1,19 +1,23 @@
 'use client'
 
+// Community page
+// Uses PageContent (layout), Header, CreatePostLink, Posts
+// Routed from home page by Premium.tsx
+// Routed from home page by NotFound.tsx and Navbar.tsx using useDirectory()
+// Routed from home and post page by PostItem.tsx
+
 import { Community, communityState } from '@/src/atoms/communityAtoms';
 import Header from '@/src/components/Community/Header';
 import NotFound from '@/src/components/Community/NotFound';
 import PageContent from '@/src/components/Layout/PageContent';
 import { firestore } from '@/src/firebase/clientApp';
 import { doc, getDoc } from 'firebase/firestore';
-import { GetServerSidePropsContext } from 'next';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'
 import CreatePostLink from '@/src/components/Community/CreatePostLink';
 import Posts from '@/src/components/Posts/Posts';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import About from '@/src/components/Community/Sidebar/About';
-import { Spinner } from '@chakra-ui/react';
 import PostLoader from '@/src/components/Posts/PostLoader';
 
 const safeJsonStringify = require('safe-json-stringify');
@@ -37,9 +41,6 @@ const CommunityPage:React.FC = () => {
 
             // Convert document into object
             const data = await JSON.parse(safeJsonStringify({ id: communityDoc.id, ...communityDoc.data() }));
-
-            // Return result for fetched data
-            // setCommunityData(communityDoc.exists() ? data : 'Not Found')
 
             // Set recoil state for current community
             if (communityDoc.exists()) {
@@ -91,8 +92,8 @@ const CommunityPage:React.FC = () => {
                 <PageContent>
                     {/* Left Side */}
                     <>
-                        <CreatePostLink/>
-                        <Posts communityData={communityStateValue.currentCommunity}/>
+                    <CreatePostLink/>
+                    <Posts communityData={communityStateValue.currentCommunity}/>
                     </>
 
                     {/* Right Side */}
@@ -100,9 +101,6 @@ const CommunityPage:React.FC = () => {
                 </PageContent>
             </>
         )
-
     }
-
 }
-
 export default CommunityPage;

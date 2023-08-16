@@ -1,3 +1,6 @@
+// Decorative icons in navbar
+// Used in RightContent.tsx
+
 import { Flex, Icon } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -6,7 +9,6 @@ import { GrAdd } from 'react-icons/gr';
 import { IoFilterCircleOutline, IoNotificationsOutline, IoVideocamOutline } from 'react-icons/io5';
 
 const Icons:React.FC = () => {
-
     const router = useRouter();
     
     return (
@@ -33,22 +35,20 @@ const Icons:React.FC = () => {
 
             {/* Icons All Screens */}
             <>
+            {/* Chat Icon */}
+            <Flex mr='1.5' ml='1.5' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }}>
+                <Icon as={BsChatDots} fontSize='20'/>
+            </Flex>
 
-                {/* Chat Icon */}
-                <Flex mr='1.5' ml='1.5' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }}>
-                    <Icon as={BsChatDots} fontSize='20'/>
-                </Flex>
+            {/* Notification Icon */}
+            <Flex mr='1.5' ml='1.4' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }}>
+                <Icon as={IoNotificationsOutline} fontSize='20'/>
+            </Flex>
 
-                {/* Notification Icon */}
-                <Flex mr='1.5' ml='1.4' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }}>
-                    <Icon as={IoNotificationsOutline} fontSize='20'/>
-                </Flex>
-
-                {/* New Post Icon */}
-                <Flex mr='1.5' ml='1.4' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }} display={{ base: 'none', md: 'flex' }}>
-                    <Icon as={GrAdd} fontSize='20'/>
-                </Flex>
-
+            {/* New Post Icon */}
+            <Flex mr='1.5' ml='1.4' padding='1' cursor='pointer' borderRadius='4' _hover={{ bg: 'gray.200' }} display={{ base: 'none', md: 'flex' }}>
+                <Icon as={GrAdd} fontSize='20'/>
+            </Flex>
             </>
         </Flex>
     )

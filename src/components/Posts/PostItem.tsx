@@ -1,3 +1,7 @@
+// Component for item for each post
+// Used in Posts.tsx and posts page
+// Voting, deleting, and selection logic located in usePosts()
+
 import { Post } from '@/src/atoms/postsAtom';
 import { Alert, AlertIcon, Box, Flex, Icon, Image, Link, Skeleton, Spinner, Stack, Text } from '@chakra-ui/react';
 import moment from 'moment';
@@ -55,7 +59,6 @@ const PostItem:React.FC<PostItemProps> = ({ post, userIsCreator, userVoteValue, 
             setError(error.message);
         }
         setLoadingDelete(false);
-
     };
     
     return (
@@ -185,8 +188,6 @@ const PostItem:React.FC<PostItemProps> = ({ post, userIsCreator, userVoteValue, 
 
                 </Stack>
             </Flex>
-
-
         </Flex>
     )
 }

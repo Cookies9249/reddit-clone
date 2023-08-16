@@ -1,3 +1,7 @@
+// Inputting text into post creation form
+// Used in NewPostForm.tsx
+// Text change logic is located in NewPostForm.tsx
+
 import { Button, Flex, Input, Stack, Textarea } from '@chakra-ui/react';
 import React from 'react';
 

@@ -1,14 +1,17 @@
+// Displays comment section under a post
+// Uses CommentInput and CommentItem
+// Used in post page
+// Contains all logic for creating comments, using batched writes
+
 import { Post, postState } from '@/src/atoms/postsAtom';
 import { Box, Flex, SkeletonCircle, SkeletonText, Stack, Text } from '@chakra-ui/react';
 import { User } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import CommentInput from './CommentInput';
-import { Timestamp, addDoc, collection, doc, getDocs, increment, orderBy, query, serverTimestamp, where, writeBatch } from 'firebase/firestore';
+import { Timestamp, collection, doc, getDocs, increment, orderBy, query, serverTimestamp, where, writeBatch } from 'firebase/firestore';
 import { firestore } from '@/src/firebase/clientApp';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import CommentItem, { Comment } from './CommentItem';
-
-// Similar to usePosts.tsx : Votes vs. Comments
 
 type CommentsProps = {
     user: User;
@@ -29,32 +32,6 @@ const Comments:React.FC<CommentsProps> = ({ user, selectedPost, communityId }) =
 
     // Recoil states
     const setPostStateValue = useSetRecoilState(postState);
-    
-    /* Batched Writes
-    
-    Intialize: `const batch = writeBatch(firestore)`
-    Commit: `batch.commit()`
-
-    Using Batched Writes:
-
-    Variables:
-
-    Write:
-    const dataRef = doc(collection(firestore, collection_name));
-    const newData: Type = {
-        id: dataRef.id,
-        ...
-    };
-    batch.set(dataRef, newData);
-
-    Update:
-    const dataRef = doc(firestore, collection_name, doc_name);
-    batch.update(dataRef, { field_to_update: new_value });
-    
-    Delete:
-    const dataRef = doc(firestore, collection_name, doc_name);
-    batch.delete(dataRef);
-    */
 
     // Handles creating comments
     const onCreateComment = async () => {

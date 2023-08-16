@@ -1,22 +1,15 @@
 'use client'
 
-import { communityState } from '@/src/atoms/communityAtoms';
-import About from '@/src/components/Community/Sidebar/About';
-import PageContent from '@/src/components/Layout/PageContent';
-import NewPostForm from '@/src/components/Posts/NewPostForm';
-import { auth } from '@/src/firebase/clientApp';
-import useCommunityData from '@/src/hooks/useCommunityData';
-import { Box, Button, Divider, Flex, Icon, Stack, Text } from '@chakra-ui/react';
+// Page advertising Reddit Premium
+// Routed from home page by Premium.tsx using useDirectory()
+
+import { Button, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { FaReddit } from 'react-icons/fa';
-import { useRecoilValue } from 'recoil';
 
 const PremiumPage:React.FC = () => {
     
-    const [user] = useAuthState(auth);
     const router = useRouter();
-    const { communityStateValue } = useCommunityData();
 
     type Perks = {
         title: string,

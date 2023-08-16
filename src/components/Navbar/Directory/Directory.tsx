@@ -1,16 +1,18 @@
 // Template from https://chakra-ui.com/docs/components/menu#usage
 
+// Directory for accessing communities
+// Used in Navbar.tsx
+// Uses Communities.tsx for directory items
+
 import { Menu, MenuButton, Text, MenuList, MenuItem, Icon, Image, Flex } from '@chakra-ui/react';
 import React from 'react';
 
 // Icon imports
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { TiHome } from 'react-icons/ti';
 import Communities from './Communities';
 import useDirectory from '@/src/hooks/useDirectory';
 
 const Directory:React.FC = () => {    
-
     const { directoryState, toggleMenuOpen } = useDirectory();
 
     return (
@@ -20,7 +22,6 @@ const Directory:React.FC = () => {
                 _hover={{ outline: '1px solid', outlineColor: 'gray.200' }}
                 onClick={toggleMenuOpen}
             >
-
                 {/* Menu styling */}
                 <Flex align='center' justify='space-between' width={{ base: 'auto', lg: '200px' }}>
                     <Flex align='center'>
@@ -47,14 +48,11 @@ const Directory:React.FC = () => {
                     </Flex>
                     <ChevronDownIcon/>
                 </Flex>
-
             </MenuButton>
 
             {/* Menu Items */}
             <MenuList>
-                
                 <Communities/>
-
             </MenuList>
         </Menu>
     )

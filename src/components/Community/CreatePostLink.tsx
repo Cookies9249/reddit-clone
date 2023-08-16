@@ -1,3 +1,7 @@
+// Displays 'Create Post' with icons
+// Used in community page, routes to community/submit page
+// Used in home page, routes to app/submit page
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { communityState } from '@/src/atoms/communityAtoms';
 import { auth } from '@/src/firebase/clientApp';

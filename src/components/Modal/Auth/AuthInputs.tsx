@@ -1,3 +1,7 @@
+// Displays either sign up or login components in modal
+// Used in AuthModal.tsx
+// Uses components from SignUp.tsx and LogIn.tsx 
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { Flex } from '@chakra-ui/react';
 import React from 'react';
@@ -5,11 +9,7 @@ import { useRecoilValue } from 'recoil';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
 
-type AuthInputsProps = {
-    // For later
-};
-
-const AuthInputs:React.FC<AuthInputsProps> = () => {
+const AuthInputs:React.FC = () => {
     const modalState = useRecoilValue(authModalState)
     
     return (

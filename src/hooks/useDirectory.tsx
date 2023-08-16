@@ -1,4 +1,9 @@
-import React, { useEffect } from 'react';
+// CONTAINS LOGIC FOR:
+// Properly rerouting between communities
+// Opening and closing directory menu
+// Automatically updating directory text after refresh
+
+import { useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { DirectoryMenuItem, directoryMenuState } from '../atoms/directoryMenuAtom';
 import { useParams, useRouter } from 'next/navigation';

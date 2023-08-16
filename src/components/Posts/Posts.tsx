@@ -1,3 +1,8 @@
+// Displaying all posts for a community
+// Used in community page
+// Uses PostItem and PostLoader
+// Voting, deleting, and selection logic located in usePosts()
+
 import { Community } from '@/src/atoms/communityAtoms';
 import { Post } from '@/src/atoms/postsAtom';
 import { auth, firestore } from '@/src/firebase/clientApp';
@@ -18,7 +23,6 @@ const Posts:React.FC<PostsProps> = ({ communityData }) => {
     // Regular hooks
     const [user] = useAuthState(auth)
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(false)
 
     // usePosts hook (hooks/usePosts.tsx)
     const { postStateValue, setPostStateValue, onVote, onDeletePost, onSelectPost } = usePosts();
@@ -50,9 +54,8 @@ const Posts:React.FC<PostsProps> = ({ communityData }) => {
                 posts: posts as Post[]
             }));
             
-
-        } catch (error: any) {
-            console.log('getPosts error', error.message)
+        } catch (error) {
+            console.log('getPosts error', error)
         }
         setLoading(false);
     };
@@ -63,24 +66,23 @@ const Posts:React.FC<PostsProps> = ({ communityData }) => {
     
     return (
         <>
-            { loading ? ( 
-                // Return skeleton if loading
-                <PostLoader/>
-            ) : (
-                // Return posts if loaded
-                <Stack>
-                    {postStateValue.posts.map(item => (
-                        <PostItem
-                            key={item.id}
-                            post={item}
-                            userIsCreator={item.creatorId === user?.uid}
-                            userVoteValue={postStateValue.postVotes.find(vote => vote.postId === item.id)?.voteValue}
-                            onVote={onVote} onDeletePost={onDeletePost} onSelectPost={onSelectPost}
-                        />
-                    ))}
-                </Stack>
-            )}
-            
+        { loading ? ( 
+            // Return skeleton if loading
+            <PostLoader/>
+        ) : (
+            // Return posts if loaded
+            <Stack>
+                {postStateValue.posts.map(item => (
+                    <PostItem
+                        key={item.id}
+                        post={item}
+                        userIsCreator={item.creatorId === user?.uid}
+                        userVoteValue={postStateValue.postVotes.find(vote => vote.postId === item.id)?.voteValue}
+                        onVote={onVote} onDeletePost={onDeletePost} onSelectPost={onSelectPost}
+                    />
+                ))}
+            </Stack>
+        )}
         </>
     )
 }

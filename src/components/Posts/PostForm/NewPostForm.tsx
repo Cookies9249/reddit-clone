@@ -1,11 +1,16 @@
+// Form for creating a new post in a community
+// Used in submit/page.tsx
+// Uses TabItem, TextInputs, ImageUpload
+// Contains logic for post creation using Post object, text changes, and image uploading
+
 import { Alert, AlertIcon, Flex, Icon, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { BsLink45Deg } from 'react-icons/bs';
 import { BiPoll } from 'react-icons/bi'
 import { IoDocumentText, IoImageOutline } from 'react-icons/io5';
 import TabItem from './TabItem';
-import TextInputs from './PostForm/TextInputs';
-import ImageUpload from './PostForm/ImageUpload';
+import TextInputs from './TextInputs';
+import ImageUpload from './ImageUpload';
 import { Post } from '@/src/atoms/postsAtom';
 import { User } from 'firebase/auth';
 import { useParams, useRouter } from 'next/navigation';
@@ -13,9 +18,6 @@ import { Timestamp, addDoc, collection, serverTimestamp, updateDoc } from 'fireb
 import { firestore, storage } from '@/src/firebase/clientApp';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
 import useSelectFile from '@/src/hooks/useSelectFile';
-
-// CONTAINS: Post creation using Post object, handleChanges, handleCreate, and Image uploading
-// Called from submit/page.tsx
 
 type NewPostFormProps = {
     user: User;

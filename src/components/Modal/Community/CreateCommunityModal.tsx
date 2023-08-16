@@ -1,14 +1,17 @@
+// Modal for creating a new community
+// Used in Navbar/Directory/Communities.tsx
+// Open/Closing logic located in Navbar/Directory/Communities.tsx
+// Uses firebase transaction to read + write to community doc
+
 import { Box, Button, Checkbox, Divider, Flex, Icon, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Stack, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { HiLockClosed } from 'react-icons/hi'
 import { BsFillEyeFill, BsFillPersonFill } from 'react-icons/bs'
-import { doc, getDoc, runTransaction, serverTimestamp, setDoc } from 'firebase/firestore';
+import { doc, runTransaction, serverTimestamp } from 'firebase/firestore';
 import { auth, firestore } from '@/src/firebase/clientApp';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import useDirectory from '@/src/hooks/useDirectory';
-
-// Called from Directory/Communities.tsx
 
 type CreateCommunityModalProps = {
     open: boolean;

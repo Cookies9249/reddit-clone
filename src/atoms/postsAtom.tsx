@@ -1,4 +1,8 @@
 // Recoil documentation: https://recoiljs.org/docs/introduction/getting-started
+
+// Recoil state for user's selected post, displayed posts, and post votes
+// Includes type for Post and PostVote
+
 import { Timestamp } from 'firebase/firestore';
 import { atom } from 'recoil';
 

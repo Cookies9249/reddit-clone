@@ -1,13 +1,15 @@
+// Decorative 'Reddit Premium' component in sidebar
+// Used in home page
+// Routes to app/premium page
+
 import { DirectoryMenuItem } from '@/src/atoms/directoryMenuAtom';
 import useDirectory from '@/src/hooks/useDirectory';
 import { Button, Flex, Icon, Stack, Text } from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import { GiCheckedShield } from 'react-icons/gi';
 
 const Premium:React.FC = () => {
 
-    const router = useRouter();
     const { onSelectMenuItem } = useDirectory();
 
     const premiumMenuItem: DirectoryMenuItem = {

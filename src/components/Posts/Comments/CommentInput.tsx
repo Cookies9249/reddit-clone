@@ -1,10 +1,11 @@
-import { Button, Flex, Icon, Input, Text, Textarea } from '@chakra-ui/react';
+// Input for creating a new comment for a post
+// Used in Comments.tsx
+// Comment logic is located in Comments.tsx (setCommentText and onCreateComment)
+
+import { Button, Flex, Text, Textarea } from '@chakra-ui/react';
 import { User } from 'firebase/auth';
 import React from 'react';
 import AuthButtons from '../../Navbar/RightContent/AuthButtons';
-
-// Icon imports
-
 
 type CommentInputProps = {
     commentText: string;

@@ -1,6 +1,9 @@
 'use client'
 
-import Image from 'next/image'
+// Home page for Reddit app
+// Uses PageContent (layout), CreatePostLink, PostItem, Recommendations
+// Routed by 
+
 import CreatePostLink from '../components/Community/CreatePostLink'
 import PageContent from '../components/Layout/PageContent'
 import useCommunityData from '../hooks/useCommunityData'
@@ -13,7 +16,6 @@ import PostItem from '../components/Posts/PostItem'
 import usePosts from '../hooks/usePosts'
 import { Post, PostVote } from '../atoms/postsAtom'
 import PostLoader from '../components/Posts/PostLoader'
-import { ref } from 'firebase/storage'
 import Recommendations from '../components/Community/Sidebar/Recommendations'
 import Premium from '../components/Community/Sidebar/Premium'
 import PersonalHome from '../components/Community/Sidebar/PersonalHome'

@@ -1,3 +1,7 @@
+// Modal view for resetting password using useSendPasswordResetEmail() hook
+// Used in AuthModal.tsx
+// Updates AuthModal using authModalState
+
 import { authModalState } from '@/src/atoms/modalAtoms';
 import { auth } from '@/src/firebase/clientApp';
 import { Flex, Button, Image, Text, Input, Icon, Link } from '@chakra-ui/react';
@@ -47,38 +51,32 @@ const ResetPassword: React.FC = () => {
           <Text mb='4'>Check your email</Text>
       ) : (
         <>
-          <Text textAlign='center' fontSize='sm' mb='2'>
-            {`Enter the email associated with your account and we'll send you a reset link`}
+        <Text textAlign='center' fontSize='sm' mb='2'>
+          {`Enter the email associated with your account and we'll send you a reset link`}
+        </Text>
+
+        <form onSubmit={onSubmit}>
+
+          {/* Text Input */}
+          <Input required name='email' placeholder='Email' type='email'
+            mb='2' fontSize='10pt' bg='gray.50'
+            onChange={onChange}
+            _placeholder={{ color: 'gray.500' }}
+            _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
+            _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
+          />
+
+          {/* Error Text */}
+          <Text textAlign='center' color='red' fontSize='10pt'>
+            {error?.message}
           </Text>
 
-          <form onSubmit={onSubmit}>
-
-            {/* Text Input */}
-            <Input
-              required
-              name='email'
-              placeholder='Email'
-              type='email'
-              mb='2'
-              onChange={onChange}
-              fontSize='10pt'
-              _placeholder={{ color: 'gray.500' }}
-              _hover={{ bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-              _focus={{ outline: 'none', bg: 'white', border: '1px solid', borderColor: 'blue.500' }}
-              bg='gray.50'
-            />
-
-            {/* Error Text */}
-            <Text textAlign='center' color='red' fontSize='10pt'>
-              {error?.message}
-            </Text>
-
-            {/* Submit Button */}
-            <Button width='100%' height='36px' mt='2' mb='2' type='submit' isLoading={sending}>
-              Reset Password
-            </Button>
-            
-          </form>
+          {/* Submit Button */}
+          <Button width='100%' height='36px' mt='2' mb='2' type='submit' isLoading={sending}>
+            Reset Password
+          </Button>
+          
+        </form>
         </>
       )}
 
