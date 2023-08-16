@@ -1,9 +1,14 @@
+// Item for each comment in a post
+// Used in Comments.tsx
+
+
 import { Box, Flex, Icon, Spinner, Stack, Text } from '@chakra-ui/react';
 import { Timestamp } from 'firebase/firestore';
 import moment from 'moment';
 import React from 'react';
 import { FaReddit } from 'react-icons/fa';
 import { IoArrowDownCircleOutline, IoArrowUpCircleOutline } from 'react-icons/io5'
+
 
 type CommentItemProps = {
     comment: Comment;
